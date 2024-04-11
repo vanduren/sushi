@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Sushi\Sushi;
 
-class Department extends Model
+class KuinProduct extends Model
 {
     use HasFactory, Sushi;
 
     public function getRows() : array
     {
-        $rows = Http::get('https://collectionapi.metmuseum.org/public/collection/v1/departments')->json()['departments'];
+        $rows = Http::withToken('78|bdyLkQtJ047KRGTvVOaEtwt51HCYdaH0fdS9Ku6D')->get('https://kuin.summaict.nl/api/product')->json();
         return $rows;
     }
+
+
+
 }
